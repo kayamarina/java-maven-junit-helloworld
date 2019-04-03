@@ -29,11 +29,15 @@ pipeline {
         }
         stage('Analysis') {
             steps {
-                script {
-                    dir('.') {
-                        sh 'echo "Analysis stage"'
-                    }
-                }
+//                script {
+//                    dir('.') {
+//                        sh 'echo "Analysis stage"'
+//                    }
+//                }
+                stepcounter outputFile: 'stepcount.xls', outputFormat: 'excel', settings: [
+                    [key:'Main', filePattern: "src/main/java/com/example/**/*.java"],
+                    [key:'Test', filePattern: "src/test/java/com/example/**/*.java"]
+                ]
             }
         }
     }
