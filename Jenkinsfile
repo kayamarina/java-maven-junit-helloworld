@@ -45,6 +45,7 @@ pipeline {
         always {
             recordIssues enabledForFailure: true, tool: checkStyle()
             recordIssues enabledForFailure: true, tool: spotBugs()
+            jacoco()
         }
     }
 }
